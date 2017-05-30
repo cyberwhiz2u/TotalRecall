@@ -12,14 +12,14 @@ namespace MarsRover
 
         IPosition Position { get; set; }
 
-        public Tuple<int[,], string, bool, int[,]> InputCommand(string command, IMap plateauBoundary)
+        public RoverOutput InputCommand(string command, IMap plateauBoundary)
         {
             if (!Validator.IsValidRoverInputCommand(command)) return null;
 
             return Move(Position, command, plateauBoundary);
         }
 
-        private Tuple<int[,], string, bool, int[,]> Move(IPosition position, string command, IMap plateauBoundary)
+        private RoverOutput Move(IPosition position, string command, IMap plateauBoundary)
         {
             char[] instructionList = command.ToCharArray();
 
@@ -33,7 +33,7 @@ namespace MarsRover
             {
                 output = PositionFinder.CalculateNewPosition(currentPosition, instruction.ToString(), boundary);
 
-                if(output.Item3) //boundary limits breached?
+                if (output.Item3) //boundary limits breached?
                 {
                     //currentPosition is NOT updated to newPosition
                     break; //do not process any further instructions if boundary limits
@@ -53,7 +53,21 @@ namespace MarsRover
             Position.Direction = currentPosition.Item2;
 
             //return output
-            return output;
+            return new RoverOutput
+            {
+                CurrentCoordinates = new RoverOutput.Coordinates
+                {
+                    XValue = Position.XCoordinate, //position on the x axis
+                    YValue = Position.YCoordinate //position on the y axis
+                },
+                CurrentDirection = Position.Direction, //current orientation
+                ExceededBoundary = output.Item3,  //has the rover exceeded the boundary
+                ExceededBoundaryAtCoordinates = new RoverOutput.Coordinates
+                {
+                    XValue = (output.Item3 == true) ? output.Item4[0, 0] : 0, //default to 0
+                    YValue = (output.Item3 == true) ? output.Item4[0, 1] : 0 //default to 0
+                }
+            };
         }
     }
 }

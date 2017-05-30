@@ -62,17 +62,17 @@ namespace MarsRover
 
                     if (result != null)
                     {
-                        position = "(" + result.Item1[0, 0].ToString() +
-                                        ", " + result.Item1[0, 1].ToString() +
-                                        ", " + result.Item2 + ")";
+                        position = "(" + result.CurrentCoordinates.XValue.ToString() +
+                                        ", " + result.CurrentCoordinates.YValue.ToString() +
+                                        ", " + result.CurrentDirection + ")";
 
                         Console.WriteLine($"\nCuriosity rover is now at: {position}");
 
-                        if (result.Item3)
+                        if (result.ExceededBoundary)
                         {
                             Console.WriteLine("\nTerminated at last safe position. Proceeding as per instruction provided would have caused Curiosity rover to exceed the boundary");
-                            var obstaclePosition = "(" + result.Item4[0, 0].ToString() +
-                                            ", " + result.Item4[0, 1].ToString() + ")";
+                            var obstaclePosition = "(" + result.ExceededBoundaryAtCoordinates.XValue.ToString() +
+                                            ", " + result.ExceededBoundaryAtCoordinates.YValue.ToString() + ")";
 
                             Console.WriteLine($"\nCuriosity rover would have crossed the boundary at : {obstaclePosition}");
                         }

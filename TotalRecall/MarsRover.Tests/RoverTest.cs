@@ -42,9 +42,9 @@ namespace MarsRover.Tests
 
             var actual = curiosity.InputCommand("WAD", _mapBoundary);
 
-            Assert.AreEqual(expected.XCoordinate, actual.Item1[0,0]);
-            Assert.AreEqual(expected.YCoordinate, actual.Item1[0, 1]);
-            Assert.AreEqual(expected.Direction, actual.Item2);
+            Assert.AreEqual(expected.XCoordinate, actual.CurrentCoordinates.XValue);
+            Assert.AreEqual(expected.YCoordinate, actual.CurrentCoordinates.YValue);
+            Assert.AreEqual(expected.Direction, actual.CurrentDirection);
         }
 
         [TestCase]
@@ -68,9 +68,9 @@ namespace MarsRover.Tests
 
             var actual = curiosity.InputCommand("WWWWADDAW", _mapBoundary);
 
-            Assert.AreEqual(expected.XCoordinate, actual.Item1[0, 0]);
-            Assert.AreEqual(expected.YCoordinate, actual.Item1[0, 1]);
-            Assert.AreEqual(expected.Direction, actual.Item2);
+            Assert.AreEqual(expected.XCoordinate, actual.CurrentCoordinates.XValue);
+            Assert.AreEqual(expected.YCoordinate, actual.CurrentCoordinates.YValue);
+            Assert.AreEqual(expected.Direction, actual.CurrentDirection);
         }
 
         [TestCase]
@@ -94,9 +94,9 @@ namespace MarsRover.Tests
 
             var actual = curiosity.InputCommand("WWWWWAAAAADDAW", _mapBoundary);
 
-            Assert.AreEqual(expected.XCoordinate, actual.Item1[0, 0]);
-            Assert.AreEqual(expected.YCoordinate, actual.Item1[0, 1]);
-            Assert.AreEqual(expected.Direction, actual.Item2);
+            Assert.AreEqual(expected.XCoordinate, actual.CurrentCoordinates.XValue);
+            Assert.AreEqual(expected.YCoordinate, actual.CurrentCoordinates.YValue);
+            Assert.AreEqual(expected.Direction, actual.CurrentDirection);
         }
     }
 }
