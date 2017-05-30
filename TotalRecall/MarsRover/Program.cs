@@ -14,7 +14,6 @@ namespace MarsRover
 
             Console.WriteLine("\nTotal Recall - Curiosity Rover - Allowed Commands (Case Senstive): " +
                               "\nW >> Move 1 Position Forward" +
-                              "\nS >> Move 1 Position Back" +
                               "\nA >> Turn Left " +
                               "\nD >> Turn Right" +
                               "\nEND >> to complete the Mission");

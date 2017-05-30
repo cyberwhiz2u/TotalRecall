@@ -92,7 +92,7 @@ namespace MarsRover.Tests
 
             var curiosity = new Rover(roverPosition);
 
-            var actual = curiosity.InputCommand("WWWWWSSSSADDAW", _mapBoundary);
+            var actual = curiosity.InputCommand("WWWWWAAAAADDAW", _mapBoundary);
 
             Assert.AreEqual(expected.XCoordinate, actual.Item1[0, 0]);
             Assert.AreEqual(expected.YCoordinate, actual.Item1[0, 1]);

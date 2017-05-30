@@ -13,7 +13,6 @@ namespace Utility
             switch (command)
             {
                 case "W": //move forward 1 grid
-                case "S": //move back 1 grid
                     newPosition = CalculateNewCoordinates(currentPosition, command, boundary);
 
                     break;
@@ -58,20 +57,12 @@ namespace Utility
                     {
                         value = ++yCoordinate;
                     }
-                    else if (command == "S")
-                    {
-                        value = --yCoordinate;
-                    }
                     newCoordinates = new int[,] { { xCoordinate, Convert.ToInt32(value) } };
                     break;
                 case "E":
                     if (command == "W")
                     {
                         value = ++xCoordinate;
-                    }
-                    else if (command == "S")
-                    {
-                        value = --xCoordinate;
                     }
                     newCoordinates = new int[,] { { Convert.ToInt32(value), yCoordinate } };
                     break;
@@ -80,20 +71,12 @@ namespace Utility
                     {
                         value = --yCoordinate;
                     }
-                    else if (command == "S")
-                    {
-                        value = ++yCoordinate;
-                    }
                     newCoordinates = new int[,] { { xCoordinate, Convert.ToInt32(value) } };
                     break;
                 case "W":
                     if (command == "W")
                     {
                         value = --xCoordinate;
-                    }
-                    else if (command == "S")
-                    {
-                        value = ++xCoordinate;
                     }
                     newCoordinates = new int[,] { { Convert.ToInt32(value), yCoordinate } };
                     break;

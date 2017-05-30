@@ -11,7 +11,7 @@ namespace Utility
             if (String.IsNullOrWhiteSpace(command)) return false;
 
             //Case sensitive check - only valid commands are W, A & D
-            Regex Validator = new Regex(@"^[WADS]+$");
+            Regex Validator = new Regex(@"^[WAD]+$");
             if (!Validator.IsMatch(command)) return false;
 
             return true;
